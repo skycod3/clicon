@@ -1,5 +1,9 @@
 ---
+// layout
 import Layout from "../layouts/Layout.astro";
+import Section from "../layouts/Section.astro";
+import Container from "../layouts/Container.astro";
+// components
 import Card from "../components/Card";
 ---
 
@@ -7,6 +11,40 @@ import Card from "../components/Card";
   <main>
     <h1 class="font-extrabold text-4xl text-center">Tailwind ok</h1>
 
-    <Card title="React ok" />
+    <Section>
+      <Container data-size="xxl">
+        <Card title="xxl (1438px)" />
+      </Container>
+    </Section>
+
+    <Section>
+      <Container>
+        <Card title="default (1320px)" />
+      </Container>
+    </Section>
+
+    <Section>
+      <Container data-size="xl">
+        <Card title="xl (1280px)" />
+      </Container>
+    </Section>
+
+    <Section>
+      <Container data-size="lg">
+        <Card title="lg (1024px)" />
+      </Container>
+    </Section>
+
+    <Section>
+      <Container data-size="md">
+        <Card title="md (768px)" />
+      </Container>
+    </Section>
+
+    <Section>
+      <Container data-size="sm">
+        <Card title="sm (640px)" />
+      </Container>
+    </Section>
   </main>
 </Layout>
