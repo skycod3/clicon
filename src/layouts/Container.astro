@@ -1,0 +1,42 @@
+---
+type Sizes = "sm" | "md" | "lg" | "xl" | "xxl";
+
+interface Props {
+  "data-size"?: Sizes;
+}
+
+const { "data-size": dataSize } = Astro.props;
+---
+
+<div class="container" data-size={dataSize}>
+  <slot />
+</div>
+
+<style lang="scss">
+  .container {
+    --max-width: 82.5rem; /* 1320 (default) */
+
+    width: min(100% - 2rem, var(--max-width));
+    margin-inline: auto;
+
+    &[data-size="sm"] {
+      --max-width: 40rem; /* 640 */
+    }
+
+    &[data-size="md"] {
+      --max-width: 48rem; /* 768 */
+    }
+
+    &[data-size="lg"] {
+      --max-width: 64rem; /* 1024 */
+    }
+
+    &[data-size="xl"] {
+      --max-width: 80rem; /* 1280 */
+    }
+
+    &[data-size="xxl"] {
+      --max-width: 89.875rem; /* 1438 */
+    }
+  }
+</style>

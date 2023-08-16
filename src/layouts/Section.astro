@@ -1,0 +1,30 @@
+---
+import type { CSSProperties } from "react";
+
+type CustomProperties = {
+  "--margin-block-min"?: string;
+  "--margin-block-max"?: string;
+  "--margin-block-val"?: string;
+  "--growth-factor"?: string;
+};
+
+interface Props {
+  style?: string | CustomProperties | CSSProperties;
+}
+
+const { style } = Astro.props;
+---
+
+<section style={style}>
+  <slot />
+</section>
+
+<style>
+  section {
+    --margin-block-min: 2rem;
+    --margin-block-max: 4.5rem;
+    --margin-block-val: var(--growth-factor, 5vw) + 0.5rem;
+
+    margin-block: clamp(var(--margin-block-min), var(--margin-block-val), var(--margin-block-max));
+  }
+</style>
