@@ -3,5 +3,5 @@ interface CardProps {
 }
 
 export default function Card(props: CardProps) {
-  return <div className="p-10 mx-4 bg-neutral-200 rounded grid place-items-center">{props.title}</div>;
+  return <div className="p-10 bg-neutral-200 rounded grid place-items-center">{props.title}</div>;
 }
