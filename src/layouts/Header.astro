@@ -1,0 +1,106 @@
+---
+import Container from "./Container.astro";
+
+import { socials } from "../placeholder";
+
+// components
+import DropdownLanguages from "../components/Dropdown/Languages";
+import DropdownCurrencies from "../components/Dropdown/Currencies";
+import PopoverSignIn from "../components/Popover/SignIn";
+import PopoverShoppingCart from "../components/Popover/ShoppingCart";
+import Input from "../components/Input";
+
+// icons
+import { MagnifyingGlass, ShoppingCart, Heart } from "phosphor-react";
+
+// imgs
+import ImgLogo from "../assets/logo.svg";
+---
+
+<header>
+  <div class="bg-secondary-700 text-white py-3 border-0 border-b border-solid border-white/10">
+    <Container>
+      <div class="flex gap-4 items-center justify-between text-sm">
+        <p>Welcome to Clicon online eCommerce store.</p>
+
+        <div class="flex">
+          <div class="flex gap-3">
+            <span>Follow us:</span>
+
+            <ul class="flex gap-3 items-center">
+              {
+                socials.map((social) => {
+                  const Icon = social.icon;
+
+                  return (
+                    <li>
+                      <a href={social.href} rel="noopener" target="_blank" aria-label={social.name}>
+                        <Icon size={16} weight="fill" />
+                      </a>
+                    </li>
+                  );
+                })
+              }
+            </ul>
+          </div>
+
+          <div class="mx-6 w-px bg-white opacity-10"></div>
+
+          <div class="flex gap-6">
+            <DropdownLanguages client:load />
+
+            <DropdownCurrencies client:load />
+          </div>
+        </div>
+      </div>
+    </Container>
+  </div>
+
+  <div class="bg-secondary-700 text-white py-5">
+    <Container>
+      <div class="flex gap-4 items-center justify-between">
+        <div>
+          <a href="/">
+            <img src={ImgLogo} width="177" height="48" alt="Clicon" />
+          </a>
+        </div>
+
+        <div>
+          <div class="relative">
+            <Input
+              style={{ width: "clamp(20rem, 50vw, 36.125rem)" }}
+              name="search"
+              label="search"
+              type="text"
+              placeholder="Search for anything..."
+            />
+
+            <button class="absolute right-5 top-1/2 -translate-y-1/2">
+              <MagnifyingGlass size={20} className="text-gray-900" />
+            </button>
+          </div>
+        </div>
+
+        <div>
+          <ul role="list" class="flex gap-6 text-white">
+            <li>
+              <PopoverShoppingCart client:load />
+            </li>
+
+            <li>
+              <button>
+                <Heart size={32} />
+              </button>
+            </li>
+
+            <li>
+              <PopoverSignIn client:load />
+            </li>
+          </ul>
+        </div>
+      </div>
+    </Container>
+  </div>
+</header>
+
+<style></style>
