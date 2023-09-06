@@ -1,0 +1,24 @@
+.button {
+  @apply inline-flex justify-center items-center gap-2 font-bold text-sm uppercase font-sans;
+
+  border-radius: 2px;
+  padding-inline: 1.5em;
+  padding-block: 1em;
+  letter-spacing: 0.168px;
+
+  &[data-theme="primary"] {
+    @apply bg-primary-500 text-white transition-colors;
+
+    &:hover {
+      @apply bg-primary-600;
+    }
+
+    &[data-type="outline"] {
+      @apply text-primary-500 bg-transparent border-2 border-solid border-primary-100;
+
+      &:hover {
+        @apply bg-primary-100 text-primary-600;
+      }
+    }
+  }
+}
